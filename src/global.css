@@ -1,0 +1,470 @@
+:root {
+  --primary: #f9a8d4;
+  --secondary: #ec4899;
+  --accent: #f472b6;
+  --success: #7dd3fc;
+  --xp: #38bdf8;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: #fde7f3;
+}
+
+.game-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(249, 168, 212, 0.1);
+}
+
+/* Mengubah warna teks dari gelap menjadi cerah */
+.text-gray-400,
+.text-gray-500,
+.text-gray-600 {
+  color: #64748b;
+}
+
+/* Progress bars dengan warna yang lebih cerah */
+.xp-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7dd3fc 0%, #38bdf8 100%);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.streak-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #facc15 0%, #f59e0b 100%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+}
+
+.weekly-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f9a8d4 0%, #ec4899 100%);
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.3);
+}
+
+/* Stats boxes dengan warna yang lebih cerah */
+.bg-gray-800\/50,
+.bg-gray-700\/50 {
+  background: #fdf2f8 !important;
+  border: 1px solid #fce7f3;
+}
+
+/* Modal backdrop dengan warna pink lembut */
+.bg-black\/70 {
+  background: rgba(249, 168, 212, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* Mengubah warna teks putih menjadi slate */
+.text-white {
+  color: #1e293b;
+}
+
+/* Badge dengan warna yang lebih cerah */
+.bg-blue-900\/30 {
+  background: #eff6ff !important;
+  color: #3b82f6 !important;
+  border: 1px solid #bfdbfe;
+}
+
+.bg-violet-900\/30 {
+  background: #fdf2f8 !important;
+  color: #ec4899 !important;
+  border: 1px solid #f9a8d4;
+}
+
+/* Shop item hover dengan shadow pink */
+.shop-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(236, 72, 153, 0.2);
+}
+
+/* Achievement item dengan warna yang lebih cerah */
+.achievement-item {
+  background: #ffffff;
+  border: 1px solid #fce7f3;
+}
+
+.achievement-item.locked {
+  background: #fdf2f8;
+  opacity: 0.8;
+}
+
+/* Share buttons dengan warna yang lebih cerah */
+.bg-green-600\/20 {
+  background: #dcfce7 !important;
+}
+
+.bg-blue-600\/20 {
+  background: #eff6ff !important;
+}
+
+.bg-pink-600\/20 {
+  background: #fdf2f8 !important;
+}
+
+/* Custom scrollbar dengan warna yang lebih cerah */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf2f8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f9a8d4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f472b6;
+}
+
+/* Card hover effect dengan shadow pink */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(236, 72, 153, 0.2);
+}
+
+/* Achievement items dengan warna yang lebih cerah */
+.achievement-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.achievement-item.locked {
+  opacity: 0.7;
+  background: #fdf2f8;
+}
+
+.achievement-item.unlocked:hover {
+  border-color: #f9a8d4;
+  background: #fdf2f8;
+}
+
+/* Badge dengan warna yang lebih cerah */
+.badge {
+  background: #fdf2f8;
+  color: #ec4899;
+  border: 1px solid #f9a8d4;
+}
+
+/* Stats boxes dengan warna yang lebih cerah */
+.stats-box {
+  background: #fdf2f8;
+  border: 1px solid #f9a8d4;
+}
+
+/* Modal backdrop dengan warna pink */
+.modal-backdrop {
+  background: rgba(236, 72, 153, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+/* Ubah warna progress bar untuk lebih cerah */
+.xp-bar {
+  background: linear-gradient(to right, #7dd3fc, #38bdf8);
+}
+
+.streak-bar {
+  background: linear-gradient(to right, #facc15, #f59e0b);
+}
+
+.weekly-bar {
+  background: linear-gradient(to right, #f9a8d4, #ec4899);
+}
+
+/* Ubah warna achievement item */
+.achievement-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.achievement-item.locked {
+  opacity: 0.7;
+  background: #fdf2f8;
+}
+
+/* Ubah warna scrollbar */
+::-webkit-scrollbar-track {
+  background: #fdf2f8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f9a8d4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f472b6;
+}
+
+.streak-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.weekly-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(17, 24, 39, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.5);
+  border-radius: 3px;
+}
+
+/* Card hover effect */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(124, 58, 237, 0.3);
+}
+
+/* Pop-up modal */
+.modal {
+  animation: modalFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Shop item hover */
+.shop-item {
+  transition: all 0.3s ease;
+}
+
+.shop-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+}
+
+/* Badge shine effect */
+.badge-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-shine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  to {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Bounce animation */
+.bounce-in {
+  animation: bounceIn 0.6s ease-in-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Floating animation */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Perbaikan untuk responsif dan overflow */
+.game-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bar container */
+.weekly-bar {
+  height: 100%;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  border-radius: 9999px;
+  transition: width 0.5s ease-out;
+  max-width: 100%; /* Membatasi lebar maksimum */
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .max-w-md {
+    padding: 0 1rem;
+  }
+
+  .game-card {
+    padding: 1rem;
+  }
+
+  .text-4xl {
+    font-size: 1.875rem;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Perbaikan untuk progress bars */
+.w-full.bg-gray-700\/50.rounded-full {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Mencegah zoom */
+html,
+body {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Mencegah double-tap zoom */
+* {
+  touch-action: pan-x pan-y;
+}
+
+/* Mencegah text selection yang bisa memicu zoom */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Efek kilat untuk ikon piala */
+.fa-trophy {
+  position: relative;
+  display: inline-block;
+}
+
+.fa-trophy::before {
+  position: relative;
+  z-index: 2;
+  color: #FACC15;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+.fa-trophy::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(250, 204, 21, 0.8) 0%,
+    rgba(250, 204, 21, 0.4) 30%,
+    rgba(250, 204, 21, 0.2) 50%,
+    transparent 70%
+  );
+  animation: trophyGlow 1.5s ease-in-out infinite;
+  z-index: 1;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+@keyframes trophyGlow {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+@keyframes trophyShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
+}
