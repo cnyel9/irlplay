@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>IRLPlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/global.css" />
+  </head>
+  <body
+    class="text-[#1E293B] min-h-screen flex flex-col items-center justify-start px-4 py-6 bg-[#FDE7F3]"
+  >
+    <div
+      id="confettiContainer"
+      class="fixed inset-0 pointer-events-none z-50"
+    ></div>
+
+    <div class="max-w-md w-full">
+      <!-- Header with logo -->
+      <div class="flex items-center justify-center mb-6">
+        <div class="relative">
+          <h1
+            class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300"
+          >
+            IRLPlay
+          </h1>
+          <span
+            class="absolute -top-1 -right-5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs px-2 py-0.5 rounded-full shadow-lg"
+            >v1</span
+          >
+          <p class="text-gray-400 text-sm text-center mt-1">
+            Level up your life cuy
+          </p>
+        </div>
+      </div>
+
+      <!-- Mission Box -->
+      <div
+        id="missionBox"
+        class="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-lg mb-4 relative overflow-hidden"
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-purple-500"
+        ></div>
+
+        <h3
+          class="text-lg font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300"
+        >
+          Misi Hari Ini
+        </h3>
+
+        <p
+          id="missionText"
+          class="text-xl font-medium mb-6 py-3 px-4 bg-gray-800/50 rounded-xl border border-gray-700/50"
+        >
+          Misi mu akan muncul di sini.
+        </p>
+
+        <div class="flex justify-between gap-3">
+          <button
+            onclick="completeMission()"
+            class="flex-1 glow-btn bg-[#F9A8D4] hover:bg-[#EC4899] text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center shadow-lg transition-all"
+          >
+            <i class="fas fa-check mr-2"></i>Mulai
+          </button>
+
+          <button
+            onclick="skipMission()"
+            class="flex-1 glow-btn bg-gray-100 hover:bg-gray-200 text-[#1E293B] font-bold py-3 px-4 rounded-xl flex items-center justify-center shadow transition-all"
+          >
+            <i class="fas fa-forward mr-2"></i>Skip dulu
+          </button>
+        </div>
+
+        <button
+          onclick="generateMission()"
+          class="mt-4 w-full text-sm text-gray-400 hover:text-white py-2 flex items-center justify-center transition-colors"
+        >
+          <i class="fas fa-dice mr-2"></i>Ganti misi
+        </button>
+      </div>
+
+      <!-- Progress Section -->
+      <div class="flex gap-3 mb-4">
+        <!-- XP Card -->
+        <div
+          class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg flex-1"
+        >
+          <div class="flex justify-between items-center mb-2">
+            <p
+              class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500"
+            >
+              <i class="fas fa-star-half-alt mr-1"></i>Kemajuan XP
+            </p>
+            <p class="text-xs text-gray-400">
+              Level <span id="level" class="text-white font-bold">1</span>
+            </p>
+          </div>
+
+          <div class="w-full bg-gray-700/50 rounded-full h-2.5 mb-1">
+            <div id="xpBar" class="xp-bar" style="width: 0%"></div>
+          </div>
+
+          <p class="text-xs text-right text-gray-400">
+            <span id="xp">0</span>/<span id="nextXP">100</span> XP
+          </p>
+        </div>
+
+        <!-- Streak Card -->
+        <div
+          class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg flex-1"
+        >
+          <div class="flex justify-between items-center mb-2">
+            <p
+              class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500"
+            >
+              <i class="fas fa-fire mr-1"></i>Streak
+            </p>
+            <p id="streakDays" class="text-xs text-gray-400">
+              Day <span id="streakCount" class="text-white font-bold">0</span>
+            </p>
+          </div>
+
+          <div class="w-full bg-gray-700/50 rounded-full h-2.5 mb-1">
+            <div id="streakBar" class="streak-bar" style="width: 0%"></div>
+          </div>
+
+          <p class="text-xs text-right text-gray-400">
+            Next: Day ke-<span id="nextStreakMilestone">7</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Game Sections -->
+      <div class="space-y-4">
+        <!-- Weekly Goals -->
+        <div class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg">
+          <div class="flex justify-between items-center mb-2">
+            <p
+              class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500"
+            >
+              <i class="fas fa-calendar-check mr-1"></i>Target Mingguan
+            </p>
+            <p
+              class="text-xs bg-blue-900/30 text-blue-300 px-2 py-0.5 rounded-full"
+            >
+              <span id="weeklyCount">0</span>/<span id="weeklyTarget">5</span>
+            </p>
+          </div>
+
+          <div class="w-full bg-gray-700/50 rounded-full h-2.5 mb-1">
+            <div id="weeklyBar" class="weekly-bar" style="width: 0%"></div>
+          </div>
+
+          <p class="text-xs text-gray-400 mt-1">
+            Selesain semua buat bonus gede cuy!
+          </p>
+        </div>
+
+        <!-- Shop System -->
+        <div class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg">
+          <div class="flex justify-between items-center mb-3">
+            <p
+              class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500"
+            >
+              <i class="fas fa-shopping-cart mr-1"></i>Shop
+            </p>
+            <p
+              class="text-xs bg-violet-900/30 text-violet-300 px-2 py-0.5 rounded-full"
+            >
+              <i class="fas fa-gem mr-1"></i><span id="points">0</span> Koin
+            </p>
+          </div>
+
+          <div id="shopItems" class="grid grid-cols-2 gap-2">
+            <!-- Item template yang bisa diklik -->
+            <div
+              class="bg-gray-800/50 rounded-lg p-3 hover:bg-gray-700/50 transition-colors cursor-pointer"
+              onclick="confirmBuyItem(1)"
+            >
+              <i class="fas fa-bolt-lightning text-[#EC4899] text-xl mb-2"></i>
+              <h3 class="font-medium text-sm">Double XP (30 Menit)</h3>
+              <p class="text-xs text-gray-500 mb-2">
+                2x lipat XP selama 30 menit
+              </p>
+              <div
+                class="w-full bg-[#EC4899] text-white text-xs rounded py-1.5 px-3"
+              >
+                <i class="fas fa-coins mr-1"></i>50 Koin
+              </div>
+            </div>
+
+            <div
+              class="bg-[#F8F9FA] rounded-lg p-3 cursor-pointer hover:bg-[#F3F4F6] transition-colors"
+              onclick="confirmBuyItem(2)"
+            >
+              <i class="fas fa-shield-halved text-[#EC4899] text-xl mb-2"></i>
+              <h3 class="font-medium text-sm">Streak Freeze</h3>
+              <p class="text-xs text-gray-500 mb-2">
+                Jaga streak 1 hari saat tidak main
+              </p>
+              <div
+                class="w-full bg-[#EC4899] text-white text-xs rounded py-1.5 px-3"
+              >
+                <i class="fas fa-coins mr-1"></i>100 Koin
+              </div>
+            </div>
+
+            <div
+              class="bg-[#F8F9FA] rounded-lg p-3 cursor-pointer hover:bg-[#F3F4F6] transition-colors"
+              onclick="confirmBuyItem(3)"
+            >
+              <i class="fas fa-forward text-[#EC4899] text-xl mb-2"></i>
+              <h3 class="font-medium text-sm">Skip Cooldown</h3>
+              <p class="text-xs text-gray-500 mb-2">Langsung main misi baru</p>
+              <div
+                class="w-full bg-[#EC4899] text-white text-xs rounded py-1.5 px-3"
+              >
+                <i class="fas fa-coins mr-1"></i>75 Koin
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg">
+          <p
+            class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 mb-3"
+          >
+            <i class="fas fa-trophy mr-1"></i>Prestasi
+          </p>
+
+          <div
+            id="achievementsList"
+            class="space-y-2 max-h-40 overflow-y-auto pr-1"
+          ></div>
+
+          <p class="text-xs text-center text-gray-400 mt-3">
+            Gaskeun misi buat kebuka prestasi lainnya cuy! ✨
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="bg-white border border-[#E2E8F0] rounded-xl p-4 shadow-lg">
+          <div class="flex justify-between items-center mb-2">
+            <p
+              class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500"
+            >
+              <i class="fas fa-chart-bar mr-1"></i>Statistik
+            </p>
+            <p class="text-xs text-gray-400">Share Statistik</p>
+          </div>
+
+          <!-- Ubah semua text-gray-400 menjadi text-slate-600 untuk visibilitas lebih baik -->
+          <p class="text-xs text-slate-600">
+            <span id="xp">0</span>/<span id="nextXP">100</span> XP
+          </p>
+
+          <!-- Ubah background statistik dari bg-gray-800/50 menjadi bg-pink-50 -->
+          <div class="grid grid-cols-3 gap-2 text-center mb-4">
+            <div class="bg-pink-50 border border-pink-100 p-2 rounded-lg">
+              <p class="text-lg font-bold text-slate-800">
+                <span id="totalMissions">0</span>
+              </p>
+              <p class="text-xs text-slate-600">Misi Kelar</p>
+            </div>
+            <div class="bg-pink-50 border border-pink-100 p-2 rounded-lg">
+              <p class="text-lg font-bold text-amber-500">
+                <span id="highestStreak">0</span>
+              </p>
+              <p class="text-xs text-slate-600">Streak Tertinggi</p>
+            </div>
+            <div class="bg-pink-50 border border-pink-100 p-2 rounded-lg">
+              <p class="text-lg font-bold text-pink-500">
+                <span id="totalPoints">0</span>
+              </p>
+              <p class="text-xs text-slate-600">Total Koin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-6 text-center text-sm text-gray-500 pb-20">
+        <p class="flex items-center justify-center">
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300"
+            >IRLPlay</span
+          >
+          <span class="mx-1">by</span>
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"
+            >Levv</span
+          >
+        </p>
+        <p class="text-xs mt-1">v1.0.0 • Epic Edition</p>
+        <div class="mt-3 space-y-1"></div>
+      </div>
+
+      <!-- Bottom Navigation -->
+      <div
+        class="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E2E8F0] px-6 py-2 shadow-lg"
+      >
+        <div class="flex justify-between items-center max-w-md mx-auto">
+          <a
+            href="./index.html"
+            class="flex flex-col items-center p-2 text-[#EC4899] transition-colors"
+          >
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs"></span>
+          </a>
+
+          <a
+            href="/cara-main/index.html"
+            class="flex flex-col items-center p-2 text-[#F9A8D4] hover:text-[#EC4899] transition-colors"
+          >
+            <i class="fas fa-book-open text-xl mb-1"></i>
+            <span class="text-xs"></span>
+          </a>
+
+          <a
+            href="/tentang/index.html"
+            class="flex flex-col items-center p-2 text-[#F9A8D4] hover:text-[#EC4899] transition-colors"
+          >
+            <i class="fas fa-info-circle text-xl mb-1"></i>
+            <span class="text-xs"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/script.js"></script>
+  </body>
+</html>
